@@ -14,10 +14,12 @@ To run the example, you will need to:
 1. Clone this Git repository
 2. [Download and configure](https://github.com/IBM-Cloud/terraform-provider-ibm) the IBM Cloud Terraform provider (minimally v0.18.0 or later) as well as IBM Commandline tools (https://cloud.ibm.com/docs/cli?topic=cli-getting-started)
 3. Obtain your [IBM Cloud API key](https://cloud.ibm.com) (needed for step #6 if youre not using Schematics)
+4.  Note!: You can skip steps 2 and 3 and use IBM Cloud Schematics service
 
- Note!: You can skip steps 2 and 3 and use IBM Cloud Schematics service
 4. Create Power Virtual Server service instance in a datacenter of your choice.
+
 5. Upload your public SSH key to the IBM Power Virtual Server cloud (the name is needed for step #6)
+
 6. Update the variables.tf file to suit your needs
 
 Next, you can run the example by invoking...
