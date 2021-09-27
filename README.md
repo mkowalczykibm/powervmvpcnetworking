@@ -1,28 +1,22 @@
-# IBM Power Virtual Server in IBM Cloud
+# Automating connectivity of IBM Power Virtual Server and VPC environment in IBM Cloud
 
-This example is part of an overall scenario to demonstrate the concept of
-enterprise application modernization by transition a historically monolithic
-application running on IBM Power Systems and refacotring it into a DB tier
-running on an AIX virtual machine (VM) and running the web tier as a container
-atop a container orchestration technology (e.g., Red Hat OpenShift).
+This is an example scenario to demonstrate the capabilities of automating provisioning and connectivity of 
+IBM Power Systems AIX virtual machine(s) with cloud native VPC environment that can host x86 virtual machines, Kubernetes/Openshift environments etc.
 
 In particular, this example creates an AIX VM in the IBM Power Virtual
-Server in IBM Cloud. 
+Server, VPC object, VPC virtual machine then creates connectivity between them in IBM Cloud. 
 
-If your Kubernetes cluster (e.g., OpenShift) is running external to the
-IBM Power Virtual Server cloud, you will need to either provision a
-DirectLink connection between the cloud infrastructures or you will need
-to ensure the AIX VM is created on a public network--ultimately so that
-the container-based web application can talk to the AIX VM.
+![PowerShowMe-Architecture](https://user-images.githubusercontent.com/7473949/134891227-45cc0297-6b5a-4636-96f3-a1dfc8b3b17a.jpg)
+
 
 To run the example, you will need to:
 
 1. Clone this Git repository
-2. [Download and configure](https://github.com/IBM-Cloud/terraform-provider-ibm) the IBM Cloud Terraform provider (minimally v0.18.0 or later)
+2. [Download and configure](https://github.com/IBM-Cloud/terraform-provider-ibm) the IBM Cloud Terraform provider (minimally v0.18.0 or later) as well as IBM Commandline tools (https://cloud.ibm.com/docs/cli?topic=cli-getting-started)
 3. Obtain your [IBM Cloud API key](https://cloud.ibm.com) (needed for step #6 if youre not using Schematics)
 
  Note!: You can skip steps 2 and 3 and use IBM Cloud Schematics service
-
+4. Create Power Virtual Server service instance in a datacenter of your choice.
 5. Upload your public SSH key to the IBM Power Virtual Server cloud (the name is needed for step #6)
 6. Update the variables.tf file to suit your needs
 
