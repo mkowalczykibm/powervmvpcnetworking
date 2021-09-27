@@ -37,9 +37,27 @@ The apply phase (provisions the infrastructure)
 terraform apply
 ```
 
-The destroy phase (deletes the infrastructure)
+This will create Power AiX virtual machine, VPC and the VPC virtual machine.
 
-```shell
-terraform destroy
-```
+In following steps IBM Cloud Cli will be used to create connectivity between these 2 environments:
+
+1. log into IBM Cloud Cli and target resource group of your choice:
+ibmcloud login --sso
+ibmcloud target -g [resource group]
+
+2. list and target Power Virtual Server instance created in step 4 of prerequisites section:
+ibmcloud pi sl
+ibmcloud pi st "service instance crn"
+
+3. run following commands to create connection and link it to VPC created by terraform automation:
+ibmcloud pi connection-create connectfra2 --speed 5000
+ibmcloud pi conns
+ibmcloud pi networks
+ibmcloud pi connection-attach-network ID --network ID
+ibmcloud pi connection-vpcs
+ibmcloud pi connection-update ID --vpc=True --vpcID ""
+ibmcloud pi connection ID
+
+4.  verify that the connectivty works by running ping command by using PowerVM web shell (log in as root)
+ping [vpc vm private ip] 
 
