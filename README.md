@@ -54,14 +54,36 @@ ibmcloud pi st "service instance crn"
 ```
 
 3. run following commands to create connection and link it to VPC created by terraform automation:
+
+Create connection with 5gbit link speed
 ```shell
 ibmcloud pi connection-create connectfra2 --speed 5000
+```
+
+List the connection and network details (note the respective IDs needed in following commands):
+```shell
 ibmcloud pi conns
 ibmcloud pi networks
-ibmcloud pi connection-attach-network ID --network ID
+```
+
+Attach power private network to the connection:
+```shell
+ibmcloud pi connection-attach-network connectionID --network networkID
+```
+
+List available VPCs in the account, note the ID of the VPC created in terraform step:
+```shell
 ibmcloud pi connection-vpcs
-ibmcloud pi connection-update ID --vpc=True --vpcID ""
-ibmcloud pi connection ID
+```
+
+Attach the VPC to the connection:
+```shell
+ibmcloud pi connection-update connectionID --vpc=True --vpcID "vpcID"
+```
+
+Show connection details to verify that everything was configured properly:
+```shell
+ibmcloud pi connection connectionID
 ```
 
 4.  verify that the connectivty works by running ping command by using PowerVM web shell (log in as root)
