@@ -1,7 +1,7 @@
+variable "ibmcloud_api_key" {}
+variable "region" {}
 
 provider "ibm" {
-    #version          = ">= 0.18.0"
-    #ibmcloud_api_key = "${var.ibmcloud_api_key}"
-    region           = "var.ibmcloud_region"
-    zone             = "var.ibmcloud_zone"
+  ibmcloud_api_key = var.ibmcloud_api_key
+  region           = var.region
 }
